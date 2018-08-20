@@ -1,0 +1,553 @@
+@widthLong-changeMedia: 640px;
+@widthShort-changeMedia: 480px;
+@font-face {
+    font-family: Myriad;
+    src: url(../font/MyriadPro-SemiboldCondIt.ttf);
+}
+
+html {
+    font-family: Myriad, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    word-wrap: normal;
+}
+
+h1 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 3.9rem;
+    @media (max-width: @widthLong-changeMedia) {
+        font-size: 2rem;
+    }
+}
+
+h2 {
+    margin: 0;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 2rem;
+    @media (max-width: @widthLong-changeMedia) {
+        margin: 0;
+        font-size: 1rem;
+    }
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin: 0;
+    font-weight: normal;
+}
+//---------------------------------------------------
+body {
+    width: 100%;
+    min-width: 320px;
+}
+
+.message {
+    width: 200px;
+    height: 50px;
+    transform: translateX(-50%);
+    position: fixed;
+    padding: 10px 20px;
+    border: 2px solid gray;
+    border-radius: 4px;
+    text-align: center;
+    background: #f6f8fa;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+}
+
+:lang(ru) .message:before {
+    content: 'Регистарция прошла успешно'
+}
+
+.ok-btn {
+    width: 20px;
+    transform: translateX(-50%);
+    position: fixed;
+    padding: 5px 10px;
+    border: 0.5px solid #3a4252;
+    border-radius: 4px;
+    text-align: center;
+    background: #3a4252;
+}
+
+.ok-btn:hover {
+    cursor: pointer;
+}
+
+//default option for background image in blocks
+.background-image() {
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+// setup input field size
+.input-size() {
+    width: 280px;
+    height: 40px;
+    margin: 3px;
+    border: none;
+    border-radius: 5px;
+}
+
+body .champion .error {
+    border: solid 1px red;
+}
+
+.btn {
+    margin: 3px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    width: 350px;
+    height: 50px;
+    font-size: 1.3rem;
+    color: white;
+    background-color: #ff8000;
+    box-shadow: 0 2px 1px 0px #ca3e00;
+    @media (max-width: @widthLong-changeMedia) {
+        margin-top: 30px;
+        width: 100%;
+    }
+}
+
+a.btn {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 50px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    color: #ff8000;
+    background-color: white;
+    box-shadow: 0 0px 0px 0px #ff8000;
+    cursor: pointer;
+}
+
+.btn:active {
+    box-shadow: none;
+}
+
+.btn-disabled {
+    margin: 3px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    width: 350px;
+    height: 50px;
+    font-size: 1.3rem;
+    color: white;
+    background-color: gray;
+    box-shadow: 0 2px 1px 0px gray;
+    @media (max-width: @widthLong-changeMedia) {
+        margin-top: 30px;
+        width: 100%;
+    }
+}
+//--------------------------------------------------
+header {
+    height: 0;
+    position: relative;
+    top: 20px;
+    padding: 0 15%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    a {
+        display: block;
+        height: 100%;
+    }
+    .logo {
+        .background-image();
+        height: 40px;
+        width: 143px;
+        background-image: url(../img/libertex-logo.png)
+    }
+    .badge {
+        .background-image();
+        height: 62px;
+        width: 129px;
+        background-image: url(../img/badge.png)
+    }
+    @media (max-width: @widthLong-changeMedia) {
+        padding: 0;
+    }
+}
+//---------------------------------------------------------------
+.background-section-champion {
+    background-image: url(../img/background-football.png);
+    .background-image();
+    background-size: auto;
+    background-color: black;
+    background-clip: padding-box;
+    @media (max-width: @widthLong-changeMedia) {
+        background-image: url(../img/background-football-mobile.png);
+        background-size: cover;
+    }
+    @media (min-width: 1200px) {
+        background-size: cover;
+    }
+}
+
+.background-section-table {
+    background-color: #3a4252;
+}
+
+//first part with sportsman----------------------------------------
+.champion {
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 135px;
+    padding-bottom: 45px;
+    color: white;
+    text-align: center;
+    @media (max-width: 640px) {
+        padding: 100px 13px 20px 13px;
+        width: auto;
+    }
+    .awards {
+        display: flex;
+        justify-content: center;
+        margin-top: 54px;
+        margin-bottom: 115px;
+        &__award {
+            height: 102px;
+            width: 117px;
+            background-repeat: no-repeat;
+            margin: 0px 20px;
+
+            &--affiliate {
+                background-image: url(../img/best-affiliate-program.png);
+            }
+            &--mobile {
+                background-image: url(../img/the-best-mobile-app.png);
+            }
+            &--finance {
+                background-image: url(../img/world-finance.png);
+            }
+
+            @media (max-width: @widthLong-changeMedia) {
+                padding: 0 10px;
+                box-sizing: border-box;
+                background-size: contain;
+            }
+
+        }
+
+        @media (max-width: @widthLong-changeMedia) {
+            margin: 20px 0;
+            justify-content: center;
+            min-width: 0;
+        }
+    }
+
+    .registration-form {
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 600px;
+        height: 140px;
+        &__field {
+            .input-size();
+            padding: 0 1rem;
+            box-sizing: border-box;
+            @media (max-width: @widthLong-changeMedia) {
+                width: 48%;
+                flex-grow: 1;
+            }
+            @media (max-width: @widthShort-changeMedia) {
+                width: 100%;
+                margin: 3px 0;
+                box-sizing: border-box;
+            }
+        }
+        @media (max-width: @widthLong-changeMedia) {
+            width: 100%;
+        }
+        @media (max-width: @widthShort-changeMedia) {
+            height: auto;
+            flex-direction: column;
+        }
+    }
+
+}
+
+//-------------------------------------------------------------
+.table-section {
+    width: 600px;
+    margin: 0 auto;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    @media (max-width: @widthLong-changeMedia) {
+        width: auto;
+        padding: 3px;
+        padding-top: 20px;
+        padding-bottom: 50px;
+        box-sizing: border-box;
+        width: auto;
+    }
+    .plate {
+        width: 100%;
+        height: 525px;
+        background-color: #121623;
+        background-clip: padding-box;
+        padding: 0 10px 50px 10px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        @media (max-width: @widthLong-changeMedia) {
+            margin-top: 10px;
+        }
+    }
+    .tournament-table {
+        width: 100%;
+        height: 100%;
+        border-collapse: collapse;
+        background-color: transparent;
+        td {
+            border-bottom: solid 2px #121623;
+        }
+        th:nth-child(1) {
+            width: 8%;
+            min-width: 54px;
+        }
+        th:nth-child(2) {
+            width: 40.8%;
+        }
+        th:nth-child(3) {
+            width: 29.0%;
+        }
+        th:nth-child(4) {
+            width: 20.3%;
+        }
+
+        tbody tr {
+            background-image: url(../img/1px-row-line.png);
+            background-size: contain;
+        }
+        tbody tr td:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            background-image: url(../img/table-gray-row-marker.png);
+            .background-image-col1();
+        }
+        tbody tr td:first-child.top {
+            background-image: url(../img/table-orange-row-marker.png);
+        }
+        tbody tr td:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            font-size: 0rem;
+        }
+
+        thead {
+            color: #626e86;
+            text-transform: uppercase;
+            th {
+                line-height: 50px;
+            }
+            th:hover {
+                cursor: pointer
+            }
+            @media (max-width: @widthShort-changeMedia) {
+                font-size: 0.7rem
+            }
+            .sort-up:after {
+                display: inline-block;
+                width: 10px;
+                height: 13px;
+                margin-left: 2px;
+                content: '';
+                background-image: url(../img/arrow-sort-revers.png);
+                .background-image();
+            }
+            .sort-down:after {
+                display: inline-block;
+                width: 10px;
+                height: 13px;
+                margin-left: 2px;
+                content: '';
+                background-image: url(../img/arrow-sort.png);
+                .background-image();
+            }
+        }
+        .flag {
+            display: inline-block;
+            height: 11px;
+            width: 14px;
+            .background-image();
+
+            &--ru {
+                background-image: url(../img/flag-ru.png);
+            }
+            &--spain {
+                background-image: url(../img/flag-sp.png);
+            }
+            &--china {
+                background-image: url(../img/flag-ch.png);
+            }
+        }
+
+        .background-image-col1() {
+            background-color: transparent;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left top;
+        }
+        .top {
+            background-image: url(../img/table-orange-row-marker.png);
+            .background-image-col1();
+        }
+    }
+
+}
+
+//-----------------------------------------------------------------
+.summary {
+    width: 600px;
+    margin: 0 auto;
+    padding: 50px 0;
+    color: #373737;
+    font-size: 0.8rem;
+    h2 {
+        text-align: center;
+    }
+    .summary-text {
+        padding-bottom: 30px;
+    }
+    @media (max-width: @widthLong-changeMedia) {
+        padding: 25px 3px;
+        width: auto;
+    }
+    .video {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 30px;
+        height: 0;
+        overflow: hidden;
+    }
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+}
+//---------------------------------------------------------------------
+footer {
+    background-color: #f6f8fa;
+    font-size: 0.7rem;
+    padding-top: 32px;
+    padding-bottom: 58px;
+    @media (max-width: @widthLong-changeMedia) {
+        padding: 20px 3px;
+    }
+    .footer-adress {
+        text-align: center;
+    }
+    .social-net {
+        display: flex;
+        justify-content: center;
+        margin: 15px 0;
+    }
+    .security-policy {
+        text-align: center;
+        color: #ff8000;
+        span {
+            margin: 0 10px
+        }
+        padding-bottom: 35px;
+    }
+    .payment {
+        width: 600px;
+        margin: 0 auto;
+        border-top: dotted 1px;
+        border-bottom: dotted 1px;
+        padding-top: 35px;
+        padding-bottom: 45px;
+        text-align: center;
+        @media (max-width: @widthLong-changeMedia) {
+            width: auto;
+        }
+    }
+    .money {
+        display: flex;
+        justify-content: space-around;
+        @media (max-width: @widthLong-changeMedia) {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        &__service {
+            margin-top: 30px;
+            height: 33px;
+            .background-image();
+            background-image: url(../img/payment-sys-sprite.png);
+            @media (max-width: @widthLong-changeMedia) {
+                margin: 0 5px;
+            }
+            &--webmoney {
+                background-position-x: 0px;
+                width: 100px;
+            }
+            &--visa {
+                background-position-x: -110px;
+                width: 50px;
+            }
+            &--skriil {
+                background-position-x: -175px;
+                width: 60px;
+            }
+            &--ya {
+                background-position-x: -240px;
+                width: 80px;
+            }
+            &--mastercard {
+                background-position-x: -340px;
+                width: 50px;
+            }
+            &--qvisa {
+                background-position-x: -400px;
+                width: 80px;
+            }
+        }
+        a {
+            display: block;
+            height: 100%;
+        }
+
+    }
+    .secure {
+        padding-top: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: gray;
+        &__item {
+            margin-left: 30px;
+            margin-right: 5px;
+            .background-image();
+        }
+        &--mcafee {
+            width: 63px;
+            height: 30px;
+            background-image: url(../img/mcafee.png);
+        }
+        &--lock {
+            width: 18px;
+            height: 20px;
+            background-image: url(../img/ssl.png);
+        }
+        a {
+            display: block;
+            height: 100%;
+        }
+    }
+}
