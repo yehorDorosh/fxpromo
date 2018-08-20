@@ -21,7 +21,7 @@ var sortTable = (function (global) {
         this.desc_class = options.desc_class || 'sort-desc';
         this.asc_class = options.asc_class || 'sort-asc';
         this.direction = global.localStorage.getItem('sort_direction') ||  SORT_DIRECTION_ASC;
-        this.index = global.localStorage.getItem('sort_index');
+        this.index = global.localStorage.getItem('sort_index') || 0;
 
         element.addEventListener('click', function (e) {
             var target = e.target,
@@ -51,6 +51,7 @@ var sortTable = (function (global) {
 
 
         if (this.index !== null) {
+            this.updateClassName(this.table.tHead.querySelectorAll('th')[this.index]);
             this.doSorting();
         }
     }
@@ -72,7 +73,7 @@ var sortTable = (function (global) {
         var original_tbody = this.table.tBodies[0];
         var clone_tbody = original_tbody.cloneNode();
         var rows = [].slice.call(original_tbody.cloneNode(true).rows, 0);
-        var reverse = (this.direction == SORT_DIRECTION_ASC);
+        var reverse = (this.direction === SORT_DIRECTION_DESC);
         var index = this.index;
 
         rows.sort(function (a, b) {
@@ -90,7 +91,6 @@ var sortTable = (function (global) {
             clone_tbody.appendChild(rows[i]);
         }
         this.table.replaceChild(clone_tbody, original_tbody);
-
 
         global.localStorage.setItem('sort_index', index);
         global.localStorage.setItem('sort_direction', this.direction);
