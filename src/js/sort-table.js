@@ -20,7 +20,7 @@ var sortTable = (function (global) {
         this.table = element;
         this.desc_class = options.desc_class || 'sort-desc';
         this.asc_class = options.asc_class || 'sort-asc';
-        this.direction = global.localStorage.getItem('sort_direction') ||  SORT_DIRECTION_ASC;
+        this.direction = global.localStorage.getItem('sort_direction') || SORT_DIRECTION_ASC;
         this.index = global.localStorage.getItem('sort_index') || 0;
 
         element.addEventListener('click', function (e) {
@@ -51,8 +51,8 @@ var sortTable = (function (global) {
 
 
         if (this.index !== null) {
-            this.updateClassName(this.table.tHead.querySelectorAll('th')[this.index]);
             this.doSorting();
+            this.updateClassName(this.table.querySelectorAll('th')[this.index]);
         }
     }
 
@@ -65,7 +65,7 @@ var sortTable = (function (global) {
 
         regexp = this.direction === SORT_DIRECTION_ASC ? this.desc_class : this.asc_class;
         var direction_class = this.direction === SORT_DIRECTION_ASC ? this.asc_class : this.desc_class;
-        regexp = new RegExp(" ?" + regexp + " ?" , "g");
+        regexp = new RegExp(" ?" + regexp + " ?", "g");
         element.className = element.className.replace(regexp, '') + ' ' + direction_class;
     }
 
@@ -77,10 +77,11 @@ var sortTable = (function (global) {
         var index = this.index;
 
         rows.sort(function (a, b) {
-            var c = a;
+            var c;
             a = a.cells[index].innerText.replace(/[$\s-]/g, '');
             b = b.cells[index].innerText.replace(/[$\s-]/g, '');
             if (reverse) {
+                c = a;
                 a = b;
                 b = c;
             }
@@ -91,6 +92,7 @@ var sortTable = (function (global) {
             clone_tbody.appendChild(rows[i]);
         }
         this.table.replaceChild(clone_tbody, original_tbody);
+
 
         global.localStorage.setItem('sort_index', index);
         global.localStorage.setItem('sort_direction', this.direction);
